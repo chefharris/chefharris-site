@@ -120,7 +120,7 @@ Supply 2–3 screenshots (phone size, PNG or JPG) from the Chef Harris build aft
 
 ## Open TODOs (the §6 list)
 
-- [ ] Create the GitHub repo `chefharris-site` (public) and push — see "Repo setup" below
+- [ ] Settings → Pages → Source: GitHub Actions, then re-run the workflow — see "Repo setup" below
 - [ ] GoatCounter account (step list 1) — then confirm the code or paste back the new one
 - [ ] Kit account (step list 2) — paste back the form id
 - [ ] 2–3 app screenshots (step list 5)
@@ -129,12 +129,11 @@ Supply 2–3 screenshots (phone size, PNG or JPG) from the Chef Harris build aft
 
 ## Repo setup (one-time)
 
-Harris's machine has no GitHub CLI, and Claude Code may not read the stored GitHub sign-in, so the empty repo has to exist before the first push. Either:
+The repo is `github.com/chefharris/chefharris-site` (public). One setting has to be switched on by hand, because the Actions token is not allowed to create the Pages site itself:
 
-- On github.com: "New repository" → name `chefharris-site` → Public → no README, no .gitignore → Create. Then Claude Code adds the remote and pushes; the Git Credential Manager opens a browser window to sign in once. Or:
-- Install the GitHub CLI (`winget install GitHub.cli`), run `gh auth login`, and Claude Code creates the repo from the terminal.
-
-Repo description to use on GitHub: "Cooking articles and the Chef Harris app page." Nothing else.
+1. On github.com open the repo → Settings → Pages.
+2. Under "Build and deployment" set **Source** to **GitHub Actions**. Nothing else to fill in.
+3. Back under Actions, open the failed "Deploy to GitHub Pages" run → "Re-run all jobs" (or push any commit). About a minute later the preview URL above is live.
 
 ## Working on the site locally
 
