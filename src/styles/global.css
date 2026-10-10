@@ -3,7 +3,8 @@
   --ivory: #F8F3E9;       /* page background, reading surface */
   --sage: #B3C29A;        /* header band, quick-answer card tint */
   --sage-wash: #E3E4D1;   /* sage over ivory, for the quick-answer card */
-  --terracotta: #C05C35;  /* links and the one button */
+  --terracotta: #C05C35;  /* the one button (brand token, unchanged) */
+  --terracotta-link: #B05430; /* text links: brand terracotta darkened to pass 4.5:1 on ivory (CSS only) */
   --brown: #4A2E1F;       /* "Chef" in the wordmark; headings */
   --ink: #1F1A17;         /* body text */
   --serif: 'Schola', 'Century Schoolbook', 'TeX Gyre Schola', Georgia, 'Times New Roman', serif;
@@ -51,7 +52,7 @@ ul, ol { padding-left: 1.3em; }
 li { margin-bottom: 0.5em; }
 
 a {
-  color: var(--terracotta);
+  color: var(--terracotta-link);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;

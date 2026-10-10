@@ -12,7 +12,7 @@ Brand files taken from the app repo's `docs/design/chef_harris_brand_v3/`.
 Build the Chef Harris website. Read claude/website_build_brief_v1_2026-10-09.md (v1.1)
 first and follow it exactly; the other signed docs it lists are in the claude/ folder
 beside it. Brand files are in the app repo at
-C:\Users\hkall\Desktop\Optimeal\docs\design\chef_harris_brand_v3\ — copy only the files
+<app repo>\docs\design\chef_harris_brand_v3\ — copy only the files
 the brief names, never the masters folder, never recolour. Keep claude/ out of the
 public site output. Stop only for the §6 list.
 ```
@@ -66,3 +66,46 @@ public site output. Stop only for the §6 list.
 ### Not built (out of brief, listed only)
 - A visible publish date on article pages (the date is in the file and in the Open Graph tag only).
 - A `site.webmanifest` / PWA icons; not needed for the scores.
+
+---
+
+## Follow-up prompt (verbatim; two grep search terms redacted so this file does not itself contain them)
+
+```
+Before any push: set this repo's git author to name "Chef Harris" and email
+chefharris.app@gmail.com (local config only, not global), rewrite the author on all
+existing commits to that, then grep the whole repo, build output, config files and git
+log for "[term 1]", "[term 2]" and any email other than chefharris.app@gmail.com. Remove
+any hit and report what you found and where it came from.
+
+Decisions on the provisional items: slugs confirmed as chosen (sticky from now). Privacy:
+change "Kit" to "Kit (USA)" in the email-capture line. Links inside article and page
+text: use a darker terracotta that passes 4.5:1 on ivory (CSS token only; brand files and
+the button unchanged); re-run Lighthouse. "Oil goes in last" stays unlinked with the
+TODO. GoatCounter code is chefharris.
+
+Commit, then wait for me to say the GitHub repo exists before pushing.
+```
+
+## Follow-up report
+
+- Git author set in the local config only (`.git/config`): "Chef Harris" <chefharris.app@gmail.com>. No global git config exists on the machine. All three commits rewritten (author and committer); the pre-rewrite objects were expired from the reflog and garbage-collected, so they cannot be pushed by accident.
+- Grep over tracked files, `.git/config`, the full git log (all refs, authors, committers, messages), the production build output and the config files:
+  - Term 1 (the old mail provider): no hits anywhere after the rewrite. Source of the original: the author identity git had copied from the app repo's local config.
+  - Term 2 (the Windows user name): one hit in this session doc, inside the verbatim prompt (the local path to the brand folder). Replaced with `<app repo>\…`. The same string is also the first part of the GitHub account name, which appears as `…-creator.github.io` in the README (preview URL, DNS CNAME target) and appeared in the workflow. The workflow now derives the preview URL from the repository owner at build time, so the literal is gone there. The README keeps it, because the DNS table and the preview link must be exact and the account name is public on GitHub anyway. Renaming the GitHub account is the only way to remove it.
+  - Other email addresses: none in text files. The email-pattern grep matched one random byte sequence inside the compressed pixel data of `hero_pan_toss_2048.png`; the file has no text or EXIF chunks at all. False positive, nothing to remove.
+- Slugs `soggy-stir-fry-vegetables` and `meat-sticks-to-pan` are now sticky.
+- `/privacy`: "stored with Kit (USA) only to send you one message…".
+- Text links now use `--terracotta-link: #B05430` (brand terracotta scaled to 91.5 %), contrast 4.57:1 on ivory. The button keeps `--terracotta: #C05C35` and the brand files are untouched.
+- Lighthouse 12.8, mobile, production build, after the change:
+
+| Page | Performance | SEO | Accessibility | Best practices |
+|---|---|---|---|---|
+| `/` | 100 | 100 | 95 | 100 |
+| `/soggy-stir-fry-vegetables` | 100 | 100 | 100 | 100 |
+| `/meat-sticks-to-pan` | 100 | 100 | 100 | 100 |
+| `/app` | 100 | 100 | 95 | 100 |
+| `/privacy` | 100 | 100 | 100 | 100 |
+
+  The remaining accessibility deduction on `/` and `/app` is the button only (ivory text on brand terracotta, 3.94:1), which was to stay unchanged.
+- Not pushed. Waiting for the GitHub repo to exist.

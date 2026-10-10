@@ -17,7 +17,7 @@ concurrency:
 
 env:
   # ── Preview (now): the site is served from the github.io project URL. ──
-  SITE_URL: https://hkallitsis-creator.github.io
+  SITE_URL: https://${{ github.repository_owner }}.github.io
   BASE_PATH: /chefharris-site
   # ── DNS step (after the Infomaniak records are set, see README §"Go live"): ──
   # replace the two lines above with
