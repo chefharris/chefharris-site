@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site.config';
+---
+<Base title="Impressum — Chef Harris" description="Impressum. Charilaos (Harris) Kallitsis, Switzerland. Responsible for all content on this site.">
+  <h1>Impressum</h1>
+  <p>
+    Charilaos (Harris) Kallitsis<br />
+    Switzerland<br />
+    <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+  </p>
+  <p>Responsible for all content on this site.</p>
+</Base>

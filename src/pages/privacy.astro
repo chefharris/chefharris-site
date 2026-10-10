@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site.config';
+const mail = `mailto:${SITE.email}`;
+---
+<Base title="Privacy — Chef Harris" description="How this website and the Chef Harris app handle your data. Run by Charilaos Kallitsis, Switzerland.">
+  <h1>Privacy</h1>
+  <p>Last updated: {SITE.privacyLastUpdated}</p>
+
+  <p><strong>Who</strong> — This site and the Chef Harris app are run by Charilaos Kallitsis, Switzerland. Contact: <a href={mail}>{SITE.email}</a></p>
+
+  <h2>This website</h2>
+  <ul>
+    <li>Visits are counted with GoatCounter, a cookie-free tool. It records the page visited, the referring site, the country and the browser type — not who you are. No cookies, no tracking across sites.</li>
+    <li>The site is hosted on GitHub Pages (GitHub Inc., USA). Like every host, GitHub keeps technical server logs (IP address, time, page) for security.</li>
+    <li>If you leave your email on the app page, it's stored with Kit only to send you one message when the app launches. Email <a href={mail}>{SITE.email}</a> any time and it's deleted.</li>
+  </ul>
+
+  <h2>The Chef Harris app</h2>
+  <p><em>Your account</em> — The app creates an anonymous account on your phone. You can link an email address so your profile survives a new phone or a reinstall. No password, no name required.</p>
+  <p><em>What you type to Chef Harris</em> — Ingredients, cravings, your kitchen gear, allergy flags and SOS questions are sent to OpenAI (USA) to generate answers. Nothing that identifies you — no name, no email, no account ID — goes with them. OpenAI may keep these inputs for up to 30 days to check for misuse; they are not used to train its models.</p>
+  <p><em>What the app keeps</em> — Your cook profile (rescues, saved recipes, cook completions, the answers you give Chef Harris) and how you use the app (which screens and features you tap). Stored with Supabase in Frankfurt, Germany. Crash reports go to Sentry (EU servers) and contain technical details only.</p>
+  <p><em>What the app doesn't do</em> — No ads, no selling of data, no location, no camera, no contacts.</p>
+  <p><em>Deleting</em> — Email <a href={mail}>{SITE.email}</a> from the linked address, or with your anonymous ID from the Profile screen, and everything is deleted within 7 days. Test-phase data of anyone who stops using the app is deleted at the end of the test.</p>
+  <p><em>Age</em> — Chef Harris is for people aged 16 and over.</p>
+
+  <p><strong>Your rights</strong> — Under Swiss data protection law you can ask what I hold about you, have it corrected or deleted. Write to <a href={mail}>{SITE.email}</a>.</p>
+</Base>

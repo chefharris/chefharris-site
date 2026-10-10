@@ -1,0 +1,54 @@
+# Builds the site and deploys it to GitHub Pages on every push to main.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  # ── Preview (now): the site is served from the github.io project URL. ──
+  SITE_URL: https://hkallitsis-creator.github.io
+  BASE_PATH: /chefharris-site
+  # ── DNS step (after the Infomaniak records are set, see README §"Go live"): ──
+  # replace the two lines above with
+  #   SITE_URL: https://chefharris.ch
+  #   BASE_PATH: /
+  # The build then writes the CNAME file, drops the "noindex" tag and opens robots.txt.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

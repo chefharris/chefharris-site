@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import lockup from '../assets/brand/lockup_horizontal_sage_2400.png';
+import { href } from '../lib/url';
+interface Props { large?: boolean }
+const { large = false } = Astro.props;
+---
+<header class:list={['site-header', { large }]}>
+  <div class="inner">
+    <a href={href('/')} aria-label="Chef Harris – home">
+      <Image src={lockup} alt="Chef Harris" width={1020} widths={[340, 680, 1020]} sizes="(min-width: 600px) 340px, 280px" format="png" loading="eager" />
+    </a>
+  </div>
+</header>

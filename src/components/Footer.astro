@@ -1,0 +1,11 @@
+---
+import { href } from '../lib/url';
+import { SITE } from '../site.config';
+---
+<footer class="site-footer">
+  <p>
+    <a href={href('/impressum')}>Impressum</a><span class="sep">·</span>
+    <a href={href('/privacy')}>Privacy</a><span class="sep">·</span>
+    <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+  </p>
+</footer>

@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/url';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({ params: { slug: article.id }, props: { article } }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+<Base title={article.data.title} description={article.data.quickAnswer} ogType="article" publishedTime={article.data.date}>
+  <article>
+    <h1>{article.data.title}</h1>
+    <aside class="quick-answer">
+      <p><strong>Quick answer:</strong> {article.data.quickAnswer}</p>
+    </aside>
+    <div class="prose">
+      <Content />
+    </div>
+    <p class="author">— <a href={href('/about')}>Harris</a></p>
+  </article>
+</Base>

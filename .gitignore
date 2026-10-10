@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+npm-debug.log*
+
+# Working documents from the planning chats. They stay on Harris's machine only:
+# they are not part of the public site and not part of the public repo.
+claude/
