@@ -6,12 +6,14 @@ import { href } from '../lib/url';
 const articles = (await getCollection('articles')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf() || a.data.title.localeCompare(b.data.title),
 );
+/** Home list only: the quick-answer line starts with a capital letter (signed 10 Oct 2026). */
+const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const description =
   "I'm a professional chef from the Greek countryside, and for the last four years I've been teaching hobby cooks, elbow to elbow, in real kitchens.";
 ---
 <Base title="Chef Harris" description={description} largeHeader>
   <p class="intro">
-    I'm a professional chef from the Greek countryside, and for the last four years I've been teaching hobby cooks, elbow to elbow, in real kitchens. These articles are the conversations we have when something goes wrong at the stove — the things recipes almost never warn you about.
+    I'm a professional chef from the Greek countryside, and for the last four years I've been teaching hobby cooks, elbow to elbow, in real kitchens. These articles are the conversations we have when the stove challenges you — the things recipes almost never warn you about.
   </p>
 
   <h2>Latest articles</h2>
@@ -19,7 +21,7 @@ const description =
     {articles.map((article) => (
       <li>
         <a href={href(`/${article.id}`)}>{article.data.title}</a>
-        <p>{article.data.quickAnswer}</p>
+        <p>{capitalise(article.data.quickAnswer)}</p>
       </li>
     ))}
   </ul>
