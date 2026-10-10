@@ -17,10 +17,9 @@ export const SITE = {
   // under "Verify ownership → HTML tag". Empty = tag not rendered.
   googleSiteVerification: '',
 
-  // Kit (email capture, D2): the numeric form id from the form's HTML embed code.
-  // TODO: empty until Harris creates the Kit account; the form on /app posts to a
-  // placeholder address until then.
-  kitFormId: '',
+  // Kit (email capture, D2): the numeric form id behind Harris's "App launch" form
+  // (the plain HTML form on /app posts to https://app.kit.com/forms/<id>/subscriptions).
+  kitFormId: '10026726',
 
   // Shown on /privacy as "Last updated". Set to the publish date when the domain goes live.
   privacyLastUpdated: '10 October 2026',

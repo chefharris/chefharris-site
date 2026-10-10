@@ -111,3 +111,5 @@ Commit, then wait for me to say the GitHub repo exists before pushing.
 - Not pushed. Waiting for the GitHub repo to exist.
 
 - Account change (10 Oct, later): the repo lives under the GitHub account `chefharris` (`github.com/chefharris/chefharris-site`). The README preview link and DNS CNAME target now read `chefharris.github.io`; the workflow derives the owner at build time. Grep for the old account name: zero hits.
+
+- Kit wired (10 Oct, later): form id `10026726` (taken from inside Harris's embed snippet; the snippet's JavaScript itself is not used). Test POST of `chefharris.app+test@gmail.com` to the endpoint returned Kit's success page ("check your email to confirm"), i.e. double opt-in is on and the test subscriber sits in Kit as unconfirmed until the confirmation link in that mail is clicked. Pages source set to GitHub Actions by Harris; deploys run.

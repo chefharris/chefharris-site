@@ -46,7 +46,7 @@ All in `src/site.config.ts`:
 |---|---|---|
 | `goatcounterCode` | GoatCounter site code (`https://<code>.goatcounter.com`) | set to `chefharris` — change only if that code was taken |
 | `googleSiteVerification` | the `content="…"` value from Google Search Console's HTML-tag method | **TODO** — empty |
-| `kitFormId` | the numeric form id from Kit | **TODO** — empty; the email form on /app posts to a placeholder until set |
+| `kitFormId` | the numeric form id from Kit | set (`10026726`, the "App launch" form) |
 | `privacyLastUpdated` | the "Last updated" date on /privacy | set to the go-live date when the domain is pointed |
 
 Push after editing; the site rebuilds.
@@ -68,7 +68,7 @@ Counts start arriving as soon as the site is visited. Dashboard: `https://<code>
 3. On the form's page click "Publish" → "HTML" tab. The embed code contains an address like `https://app.kit.com/forms/1234567/subscriptions`. Paste back **the one line**: `kitFormId: '1234567'`.
 4. Export of the list: Grow → Subscribers → "Export" gives a CSV at any time. No sequences or automations are set up; the one launch email is a plain "Broadcast".
 
-Until step 3 is done, the "Tell me" button submits to a placeholder address and shows an error page. This is the only TODO on the visible site.
+Done on 10 Oct 2026: the form on /app posts to Kit form `10026726`. Kit's own embed snippet (the `<script … index.js>` line) is not used; the numeric id inside it is enough for the plain HTML form, so the site stays JavaScript-free.
 
 ### 3. Google Search Console — about 5 minutes, only after the domain is live
 
@@ -120,9 +120,9 @@ Supply 2–3 screenshots (phone size, PNG or JPG) from the Chef Harris build aft
 
 ## Open TODOs (the §6 list)
 
-- [ ] Settings → Pages → Source: GitHub Actions, then re-run the workflow — see "Repo setup" below
+- [x] Settings → Pages → Source: GitHub Actions — done
 - [ ] GoatCounter account (step list 1) — then confirm the code or paste back the new one
-- [ ] Kit account (step list 2) — paste back the form id
+- [x] Kit account (step list 2) — form id set
 - [ ] 2–3 app screenshots (step list 5)
 - [ ] On-device review on the Pixel at the preview URL
 - [ ] When 12 articles are ready: Infomaniak DNS + redirect (step list 4), then Search Console (step list 3)

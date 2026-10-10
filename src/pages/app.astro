@@ -4,9 +4,8 @@ import Base from '../layouts/Base.astro';
 import hero from '../assets/brand/hero_pan_toss_2048.png';
 import { SITE } from '../site.config';
 
-// Kit plain HTML form (no JavaScript). TODO: the form id is pasted into src/site.config.ts
-// once Harris has created the Kit account; until then the form posts to a placeholder.
-const formAction = `https://app.kit.com/forms/${SITE.kitFormId || 'TODO-KIT-FORM-ID'}/subscriptions`;
+// Kit plain HTML form (no JavaScript); the form id lives in src/site.config.ts.
+const formAction = `https://app.kit.com/forms/${SITE.kitFormId}/subscriptions`;
 ---
 <Base title="Chef Harris — coming soon" description="Imagine a chef standing next to you who doesn't hand you a recipe, but watches, asks what's happening in the pan, and tells you why.">
   <h1>Chef Harris — coming soon</h1>
