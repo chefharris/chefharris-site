@@ -3,7 +3,7 @@
 Harris's cooking articles and the "coming soon" page for the Chef Harris app.
 Static site built with [Astro](https://astro.build), hosted on GitHub Pages, cost CHF 0.
 
-- Live preview (until the domain is pointed): https://hkallitsis-creator.github.io/chefharris-site/
+- Live preview (until the domain is pointed): https://chefharris.github.io/chefharris-site/
 - Live domain (after the "Go live" step below): https://chefharris.ch
 
 Every push to `main` rebuilds and deploys the site automatically (about one minute).
@@ -95,7 +95,7 @@ Delete any existing `A`, `AAAA` or `CNAME` record for `@` (the bare domain) and 
 | AAAA | `@` | `2606:50c0:8001::153` | default |
 | AAAA | `@` | `2606:50c0:8002::153` | default |
 | AAAA | `@` | `2606:50c0:8003::153` | default |
-| CNAME | `www` | `hkallitsis-creator.github.io.` | default |
+| CNAME | `www` | `chefharris.github.io.` | default |
 
 Infomaniak's "Add a record" dialog: pick the type, type the name (`@` or `www`), paste the target, Save. Nine records in total. Email records (`MX`) are not touched.
 
@@ -145,7 +145,7 @@ npm run build                    # production build into dist/ (domain URLs)
 node scripts/make-favicons.mjs   # regenerate the favicon files from the brand icon
 ```
 
-Preview-mode build (github.io URLs, as the workflow does it): set `SITE_URL=https://hkallitsis-creator.github.io` and `BASE_PATH=/chefharris-site` before `npm run build`.
+Preview-mode build (github.io URLs, as the workflow does it): set `SITE_URL=https://chefharris.github.io` and `BASE_PATH=/chefharris-site` before `npm run build`.
 
 ## What is where
 

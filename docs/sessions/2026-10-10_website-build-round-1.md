@@ -109,3 +109,5 @@ Commit, then wait for me to say the GitHub repo exists before pushing.
 
   The remaining accessibility deduction on `/` and `/app` is the button only (ivory text on brand terracotta, 3.94:1), which was to stay unchanged.
 - Not pushed. Waiting for the GitHub repo to exist.
+
+- Account change (10 Oct, later): the repo lives under the GitHub account `chefharris` (`github.com/chefharris/chefharris-site`). The README preview link and DNS CNAME target now read `chefharris.github.io`; the workflow derives the owner at build time. Grep for the old account name: zero hits.
