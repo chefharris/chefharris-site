@@ -121,7 +121,7 @@ Supply 2–3 screenshots (phone size, PNG or JPG) from the Chef Harris build aft
 ## Open TODOs (the §6 list)
 
 - [x] Settings → Pages → Source: GitHub Actions — done
-- [ ] GoatCounter account (step list 1) — then confirm the code or paste back the new one
+- [x] GoatCounter account (step list 1) — code `chefharris`, live
 - [x] Kit account (step list 2) — form id set
 - [ ] 2–3 app screenshots (step list 5)
 - [ ] On-device review on the Pixel at the preview URL
