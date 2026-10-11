@@ -136,3 +136,9 @@ Done:
 - Measured with device emulation on all six pages: logo 274 × 64 at 380 px (DPR 2.625), 325 × 75.5 at 1280 px, identical on every page, no horizontal scroll.
 - Signed files updated locally in `claude/` (git-ignored): page texts (consent line) and legal (email-capture line, which also replaces the old "[email tool]" placeholder with Kit (USA)).
 - Lighthouse 12.8, mobile, local production build: `/`, `/app` 100/95/100/100; both articles and `/privacy` 100/100/100/100 (Perf/A11y/BP/SEO). The 95 is the unchanged terracotta button contrast, as before.
+
+### Follow-up (11 Oct 2026)
+
+Prompt (verbatim): "Signed (Harris, 11 Oct 2026): on /privacy replace "Ingredients, cravings, your kitchen gear" with "Ingredients, the dishes you ask for, your kitchen gear". Update claude/website_legal_SIGNED.md, commit, push, confirm the deploy."
+
+Done: `/privacy` app section reworded; signed legal file updated locally in `claude/`. "Last updated" was already 11 October 2026.
