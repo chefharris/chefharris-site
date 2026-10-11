@@ -82,12 +82,10 @@ img { max-width: 100%; height: auto; display: block; }
 .site-header { background: var(--sage); padding: 0.75rem var(--gutter); }
 .site-header .inner { max-width: var(--measure); margin: 0 auto; }
 .site-header a { display: inline-block; line-height: 0; }
-.site-header img { height: 64px; width: auto; }
-.site-header.large img { height: 88px; }
-@media (min-width: 600px) {
-  .site-header img { height: 76px; }
-  .site-header.large img { height: 110px; }
-}
+/* One size on every page. Width drives the size and height follows the image's own
+   ratio, so the round logo can never be squeezed into an oval on a narrow screen. */
+.site-header img { width: 274px; height: auto; max-width: 100%; object-fit: contain; }
+@media (min-width: 600px) { .site-header img { width: 325px; } }
 
 /* Footer */
 .site-footer {

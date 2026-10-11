@@ -22,5 +22,5 @@ export const SITE = {
   kitFormId: '10026726',
 
   // Shown on /privacy as "Last updated". Set to the publish date when the domain goes live.
-  privacyLastUpdated: '10 October 2026',
+  privacyLastUpdated: '11 October 2026',
 };

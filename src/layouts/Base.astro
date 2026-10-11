@@ -12,9 +12,8 @@ interface Props {
   description: string;
   ogType?: 'website' | 'article';
   publishedTime?: Date;
-  largeHeader?: boolean;
 }
-const { title, description, ogType = 'website', publishedTime, largeHeader = false } = Astro.props;
+const { title, description, ogType = 'website', publishedTime } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = await getImage({ src: heroSrc, width: 1200, height: 1200, format: 'jpeg' });
@@ -53,7 +52,7 @@ const fontFace = `@font-face{font-family:'Schola';src:url('${fontUrl}') format('
     )}
   </head>
   <body>
-    <Header large={largeHeader} />
+    <Header />
     <main>
       <slot />
     </main>

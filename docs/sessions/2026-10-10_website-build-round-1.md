@@ -121,3 +121,18 @@ Commit, then wait for me to say the GitHub repo exists before pushing.
 Prompt (verbatim): "Three signed changes: (1) add "About" to the footer on every page: Impressum · Privacy · About · email. (2) On the Home "Latest articles" list, capitalise the first letter of each quick-answer line (list only; article pages unchanged). (3) Replace the Home paragraph's second sentence, verbatim: "These articles are the conversations we have when the stove challenges you — the things recipes almost never warn you about." Update claude/website_page_texts_SIGNED.md in docs/ to match, commit, push, confirm the deploy."
 
 Done: footer link added in `Footer.astro`; home list capitalises the first letter at render time (the article files and article pages are untouched); home paragraph sentence replaced. The signed page-texts file was updated locally in `claude/` (that folder is git-ignored, so the change is recorded here in `docs/sessions/` for the public record). Deployed to the preview URL.
+
+---
+
+## Pixel review, round 2 (11 Oct 2026) — three signed fixes
+
+Prompt (verbatim): "Three signed fixes (Harris, 11 Oct 2026): 1. /app consent line, replace verbatim with: "I'll write when the app is ready — and after that only when there's something worth your time. Leave whenever you like." 2. /privacy email-capture line, replace the purpose with: "only to send you news about the app — rarely, and never shared." Keep "Kit (USA)" and the delete-by-email sentence. 3. Header: Home uses a bigger logo/header than every other page and on phones the round logo is stretched into an oval. Use ONE header component on every page, at the size the article pages use now; the logo keeps its aspect ratio on every screen size (fixed width and height or object-fit: contain). Check at 380 px and on desktop. Update claude/website_page_texts_SIGNED.md and claude/website_legal_SIGNED.md to match, re-run Lighthouse, commit, push, confirm the deploy."
+
+Done:
+- `/app` consent line replaced verbatim.
+- `/privacy`: "…stored with Kit (USA) only to send you news about the app — rarely, and never shared. Email … any time and it's deleted." "Last updated" moved to 11 October 2026 because the policy text changed.
+- Header: the `large` variant is gone; Home, articles and all other pages render the same `Header.astro`. Logo box is 274 px wide on phones and 325 px from 600 px up (the heights the article pages used before: about 64 px and 76 px). The height now follows the image's own ratio, and `object-fit: contain` keeps the drawing undistorted.
+- Cause of the oval: Home's phone logo was fixed at 88 px *height*, which made it 376 px wide. That did not fit a 380 px screen minus the gutters, so `max-width: 100%` narrowed the width while the height stayed fixed. The logo was squeezed sideways.
+- Measured with device emulation on all six pages: logo 274 × 64 at 380 px (DPR 2.625), 325 × 75.5 at 1280 px, identical on every page, no horizontal scroll.
+- Signed files updated locally in `claude/` (git-ignored): page texts (consent line) and legal (email-capture line, which also replaces the old "[email tool]" placeholder with Kit (USA)).
+- Lighthouse 12.8, mobile, local production build: `/`, `/app` 100/95/100/100; both articles and `/privacy` 100/100/100/100 (Perf/A11y/BP/SEO). The 95 is the unchanged terracotta button contrast, as before.
