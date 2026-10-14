@@ -9,11 +9,11 @@ const articles = (await getCollection('articles')).sort(
 /** Home list only: the quick-answer line starts with a capital letter (signed 10 Oct 2026). */
 const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const description =
-  "I'm a professional chef from the Greek countryside, and for the last four years I've been teaching hobby cooks, elbow to elbow, in real kitchens.";
+  "I'm a professional chef from the Greek countryside, and for years now I've been teaching hobby cooks in person, side by side at the stove.";
 ---
 <Base title="Chef Harris" description={description}>
   <p class="intro">
-    I'm a professional chef from the Greek countryside, and for the last four years I've been teaching hobby cooks, elbow to elbow, in real kitchens. These articles are the conversations we have when the stove challenges you — the things recipes almost never warn you about.
+    I'm a professional chef from the Greek countryside, and for years now I've been teaching hobby cooks in person, side by side at the stove. These articles are the conversations we have when the stove challenges you — the why behind cooking that recipes almost never tell you.
   </p>
 
   <h2>Latest articles</h2>

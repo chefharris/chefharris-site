@@ -142,3 +142,15 @@ Done:
 Prompt (verbatim): "Signed (Harris, 11 Oct 2026): on /privacy replace "Ingredients, cravings, your kitchen gear" with "Ingredients, the dishes you ask for, your kitchen gear". Update claude/website_legal_SIGNED.md, commit, push, confirm the deploy."
 
 Done: `/privacy` app section reworded; signed legal file updated locally in `claude/`. "Last updated" was already 11 October 2026.
+
+---
+
+## Home and About re-signed (14 Oct 2026)
+
+Harris signed new wording for the Home paragraph and the whole About page (SIGNED 14 Oct 2026). Both replaced byte for byte; layout, header, footer and links unchanged.
+
+Done:
+- Home: paragraph under the logo replaced. The page's meta description is the paragraph's first sentence, so it now carries the new first sentence too.
+- About: page text replaced (now five paragraphs plus the email line). The meta description (its opening lines) is unchanged because those lines are unchanged.
+- Signed page-texts file updated locally in `claude/` (git-ignored), so the change is recorded here.
+- Check: rendered text of both built pages compared against the signed file, exact match. At 380 px with mobile device emulation: no horizontal scroll, no element past the right edge, nothing clipped.
