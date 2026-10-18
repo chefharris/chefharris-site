@@ -2,6 +2,7 @@
 title: "Why your meat sticks to the pan — and when to flip it"
 quickAnswer: "the pan wasn't hot enough, or you touched it too early. Preheat an uncoated pan properly, oil in last, meat in, hands off. When it's ready, it lets go by itself."
 date: 2026-10-10
+published: false
 ---
 
 It'll let you know.

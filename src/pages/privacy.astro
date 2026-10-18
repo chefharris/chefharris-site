@@ -13,15 +13,17 @@ const mail = `mailto:${SITE.email}`;
   <ul>
     <li>Visits are counted with GoatCounter, a cookie-free tool. It records the page visited, the referring site, the country and the browser type — not who you are. No cookies, no tracking across sites.</li>
     <li>The site is hosted on GitHub Pages (GitHub Inc., USA). Like every host, GitHub keeps technical server logs (IP address, time, page) for security.</li>
-    <li>If you leave your email on the app page, it's stored with Kit (USA) only to send you news about the app — rarely, and never shared. Email <a href={mail}>{SITE.email}</a> any time and it's deleted.</li>
+    <li>If you leave your email on this site, it's stored with Kit (USA) only to send you news about the app and, if you ticked the box, an invitation to test it — rarely, and never shared. Email <a href={mail}>{SITE.email}</a> any time and it's deleted.</li>
   </ul>
 
   <h2>The Chef Harris app</h2>
-  <p><em>Your account</em> — The app creates an anonymous account on your phone. You can link an email address so your profile survives a new phone or a reinstall. No password, no name required.</p>
-  <p><em>What you type to Chef Harris</em> — Ingredients, the dishes you ask for, your kitchen gear, allergy flags and SOS questions are sent to OpenAI (USA) to generate answers. Nothing that identifies you — no name, no email, no account ID — goes with them. OpenAI may keep these inputs for up to 30 days to check for misuse; they are not used to train its models.</p>
-  <p><em>What the app keeps</em> — Your cook profile (rescues, saved recipes, cook completions, the answers you give Chef Harris) and how you use the app (which screens and features you tap). Stored with Supabase in Frankfurt, Germany. Crash reports go to Sentry (EU servers) and contain technical details only.</p>
+  <p><em>Your account</em> — The app creates an anonymous account on your phone. To keep your profile across a new phone or a reinstall, tap "Secure my account" and add an email and a password. Your first name stays on your phone; it is never uploaded.</p>
+  <p><em>What the app keeps on the server</em> — Your cook profile: diet (omnivore, vegetarian, vegan or pescatarian), the allergens you tick, kitchen-confidence level, household servings, saved and planned recipes, rescued ingredients per cooked dish, the answers you give Chef Harris, and usage counters. Allergens and diet are health-related data; they're stored so an allergy is never lost on a new phone. Stored with Supabase in Frankfurt, Germany.</p>
+  <p><em>What goes to OpenAI</em> — To write your recipes, the app sends your ingredients, the dish you ask for, your kitchen gear, your diet and allergens, and SOS questions to OpenAI (USA). We never send your name, email or account ID. OpenAI may keep these inputs for up to 30 days to check for misuse; they are not used to train its models.</p>
+  <p><em>Allergens</em> — Chef Harris checks only the 14 main allergens you tick in your profile. For anything else, check the label yourself.</p>
+  <p><em>Crash reports</em> — Sent to Sentry (EU servers). They carry technical details and your anonymous account ID — no name, no email, nothing you typed.</p>
   <p><em>What the app doesn't do</em> — No ads, no selling of data, no location, no camera, no contacts.</p>
-  <p><em>Deleting</em> — Email <a href={mail}>{SITE.email}</a> from the linked address, or with your anonymous ID from the Profile screen, and everything is deleted within 7 days. Test-phase data of anyone who stops using the app is deleted at the end of the test.</p>
+  <p><em>Deleting</em> — Email <a href={mail}>{SITE.email}</a> from your account email, or with the anonymous ID shown on the Profile screen. I delete your profile, recipes, ledger and counters from the server and confirm by reply within 30 days. Test-phase data of anyone who stops using the app is deleted at the end of the test.</p>
   <p><em>Age</em> — Chef Harris is for people aged 16 and over.</p>
 
   <p><strong>Your rights</strong> — Under Swiss data protection law you can ask what I hold about you, have it corrected or deleted. Write to <a href={mail}>{SITE.email}</a>.</p>

@@ -1,0 +1,32 @@
+---
+import { SITE } from '../site.config';
+
+// The Kit "App launch" form, used twice on the Home page (top and bottom).
+// Plain HTML POST to Kit; the small script in index.astro fills the source field from ?ref=
+// and counts the submit in GoatCounter. Without JavaScript the form still works.
+interface Props {
+  placement: 'top' | 'bottom';
+}
+const { placement } = Astro.props;
+const formAction = `https://app.kit.com/forms/${SITE.kitFormId}/subscriptions`;
+const emailId = `email-${placement}`;
+const testerId = `tester-${placement}`;
+---
+<section class="signup" aria-labelledby={`signup-heading-${placement}`}>
+  <h2 id={`signup-heading-${placement}`}>Want to know when it's ready?</h2>
+  <form action={formAction} method="post" data-event={`signup-${placement}`}>
+    <div class="row">
+      <label class="visually-hidden" for={emailId}>Email address</label>
+      <input type="email" id={emailId} name="email_address" autocomplete="email" required />
+      <button type="submit" class="button">Tell me</button>
+    </div>
+    <label class="check" for={testerId}>
+      {SITE.kitTesterTagId
+        ? <input type="checkbox" id={testerId} name="tags[]" value={SITE.kitTesterTagId} />
+        : <input type="checkbox" id={testerId} />}
+      <span>I'd like to test it before launch (limited spots).</span>
+    </label>
+    <input type="hidden" name="fields[source]" value="direct" />
+  </form>
+  <p class="consent">I'll write when the app is ready — and after that only when there's something worth your time. Leave whenever you like.</p>
+</section>

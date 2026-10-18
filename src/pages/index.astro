@@ -1,34 +1,79 @@
 ---
-import { getCollection } from 'astro:content';
+import { Image, Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import SignupForm from '../components/SignupForm.astro';
 import { href } from '../lib/url';
+import hero from '../assets/brand/hero_pan_toss_2048.png';
+import cartoonFace from '../assets/brand/app_icon_face_only_1024.png';
+import fridgeClearer from '../assets/screens/fridge-clearer.png';
+import cookMode from '../assets/screens/cook-mode.png';
+import sos from '../assets/screens/sos.png';
+import whatYouLearned from '../assets/screens/what-you-learned.png';
 
-const articles = (await getCollection('articles')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf() || a.data.title.localeCompare(b.data.title),
-);
-/** Home list only: the quick-answer line starts with a capital letter (signed 10 Oct 2026). */
-const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+// Bio picture: Harris's photo if src/assets/harris.jpg exists, otherwise the cartoon face (brand v3).
+// Dropping the photo in is the only step; no code change (README §"Harris's photo").
+const photos = import.meta.glob<{ default: ImageMetadata }>('../assets/harris.jpg', { eager: true });
+const bioImage = Object.values(photos)[0]?.default ?? cartoonFace;
+
 const description =
-  "I'm a professional chef from the Greek countryside, and for years now I've been teaching hobby cooks in person, side by side at the stove.";
+  'Chef Harris is a cooking app that teaches you the why: what to look, listen and taste for, and how to save a dish when the pan surprises you. In English and German.';
+
+const features = [
+  { title: 'Fridge Clearer', text: "Tell me what's left in the fridge. I'll give you three dinners that use it up, made with the gear you actually have.", image: fridgeClearer },
+  { title: 'Cook Mode', text: 'Step by step, with what to see, hear and smell — not just minutes.', image: cookMode },
+  { title: 'SOS', text: "Something's off mid-cook? Ask me, and I'll tell you what happened and how to save it.", image: sos },
+  { title: 'What you learned', text: 'After every dish, one thing you keep for next time.', image: whatYouLearned },
+];
 ---
-<Base title="Chef Harris" description={description}>
-  <p class="intro">
-    I'm a professional chef from the Greek countryside, and for years now I've been teaching hobby cooks in person, side by side at the stove. These articles are the conversations we have when the stove challenges you — the why behind cooking that recipes almost never tell you.
-  </p>
+<Base title="Chef Harris" ogTitle="Chef Harris — Cook by feel, not by luck." description={description} ogImage="landing">
+  <section class="hero-text">
+    <h1>Cook by feel, not by luck.</h1>
+    <p class="lead">{description}</p>
+    <p class="muted">Coming early 2027.</p>
+  </section>
+  <div class="hero">
+    <Image src={hero} alt="Chef Harris tossing vegetables in a pan" width={840} widths={[420, 840]} sizes="(min-width: 600px) 300px, 200px" loading="eager" />
+  </div>
 
-  <h2>Latest articles</h2>
-  <ul class="articles">
-    {articles.map((article) => (
-      <li>
-        <a href={href(`/${article.id}`)}>{article.data.title}</a>
-        <p>{capitalise(article.data.quickAnswer)}</p>
-      </li>
-    ))}
-  </ul>
+  <SignupForm placement="top" />
 
-  <p><a class="button" href={href('/app')}>Meet the app →</a></p>
+  <section class="features" aria-labelledby="what-it-does">
+    <h2 id="what-it-does">What it does</h2>
+    <ul>
+      {features.map((f, i) => (
+        <li>
+          <h3>{f.title}</h3>
+          <p>{f.text}</p>
+          <div class="phone">
+            <Picture src={f.image} formats={['webp']} fallbackFormat="png" quality={90} widths={[360, 720]} sizes="300px" alt={f.title} loading={i === 0 ? 'eager' : 'lazy'} />
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="bio">
+    <Image class="face" src={bioImage} alt="Harris" width={192} height={192} densities={[1, 2]} loading="lazy" />
+    <div>
+      <p>Hi, I'm Harris — a chef from the Greek countryside, raised among farmers, teaching hobby cooks for years. This app is me in your kitchen when I can't be there.</p>
+      <p><a href={href('/about')}>More about me →</a></p>
+    </div>
+  </section>
+
+  <SignupForm placement="bottom" />
 </Base>
 
-<style>
-  .intro { font-size: 1.1em; margin-top: 0.5rem; }
-</style>
+<script>
+  // Source tracking: ?ref=linkedin → Kit custom field "source" (letters, digits, - and _ only; else "direct").
+  const ref = new URLSearchParams(location.search).get('ref')?.trim().toLowerCase() ?? '';
+  const source = /^[a-z0-9_-]{1,32}$/.test(ref) ? ref : 'direct';
+  document.querySelectorAll<HTMLInputElement>('input[name="fields[source]"]').forEach((el) => (el.value = source));
+
+  // GoatCounter event per placement (signup-top / signup-bottom), sent as the form posts to Kit.
+  document.querySelectorAll<HTMLFormElement>('form[data-event]').forEach((form) => {
+    form.addEventListener('submit', () => {
+      const gc = (window as any).goatcounter;
+      if (gc?.count) gc.count({ path: form.dataset.event, title: form.dataset.event, event: true });
+    });
+  });
+</script>

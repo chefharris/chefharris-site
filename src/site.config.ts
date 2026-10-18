@@ -18,9 +18,13 @@ export const SITE = {
   googleSiteVerification: '',
 
   // Kit (email capture, D2): the numeric form id behind Harris's "App launch" form
-  // (the plain HTML form on /app posts to https://app.kit.com/forms/<id>/subscriptions).
+  // (both forms on the Home page post to https://app.kit.com/forms/<id>/subscriptions).
   kitFormId: '10026726',
 
-  // Shown on /privacy as "Last updated". Set to the publish date when the domain goes live.
-  privacyLastUpdated: '11 October 2026',
+  // Kit tag "tester-interest" (L4): the numeric id of the tag the tester checkbox applies.
+  // Empty = the checkbox is shown but not sent to Kit yet. See README §"Kit".
+  kitTesterTagId: '',
+
+  // Shown on /privacy as "Last updated". Changes only when the privacy text changes.
+  privacyLastUpdated: '18 October 2026',
 };

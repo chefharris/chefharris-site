@@ -1,34 +1,21 @@
 ---
-import { Image } from 'astro:assets';
-import Base from '../layouts/Base.astro';
-import hero from '../assets/brand/hero_pan_toss_2048.png';
-import { SITE } from '../site.config';
-
-// Kit plain HTML form (no JavaScript); the form id lives in src/site.config.ts.
-const formAction = `https://app.kit.com/forms/${SITE.kitFormId}/subscriptions`;
+// /app stays reachable (future store-listing link) and sends visitors to the Home page.
+// Static redirect: meta refresh plus canonical to "/", so search engines credit the Home page.
+import { href } from '../lib/url';
+const home = href('/');
+const canonical = new URL(home, Astro.site);
 ---
-<Base title="Chef Harris — coming soon" description="Imagine a chef standing next to you who doesn't hand you a recipe, but watches, asks what's happening in the pan, and tells you why.">
-  <h1>Chef Harris — coming soon</h1>
-
-  <div class="hero">
-    <Image src={hero} alt="Chef Harris tossing vegetables in a pan" width={1260} widths={[420, 840, 1260]} sizes="(min-width: 600px) 420px, calc(100vw - 40px)" loading="eager" />
-  </div>
-
-  <p>Imagine a chef standing next to you who doesn't hand you a recipe, but watches, asks what's happening in the pan, and tells you why. That's the app: technique first, your kitchen, your ingredients, your mistakes turned into skills.</p>
-
-  <!-- Screenshot placeholders: Harris supplies 2–3 screenshots (build after fix round B, v3 brand). -->
-  <div class="screenshots" aria-hidden="true">
-    <div class="frame"></div>
-    <div class="frame"></div>
-    <div class="frame"></div>
-  </div>
-
-  <section class="signup">
-    <h2>Want to know when it's ready?</h2>
-    <form action={formAction} method="post">
-      <input type="email" name="email_address" aria-label="Email address" autocomplete="email" required />
-      <button type="submit" class="button">Tell me</button>
-    </form>
-    <p class="consent">I'll write when the app is ready — and after that only when there's something worth your time. Leave whenever you like.</p>
-  </section>
-</Base>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chef Harris</title>
+    <meta http-equiv="refresh" content={`0; url=${home}`} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <p><a href={home}>Chef Harris</a></p>
+  </body>
+</html>

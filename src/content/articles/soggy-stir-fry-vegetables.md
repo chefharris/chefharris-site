@@ -2,6 +2,7 @@
 title: "Why your stir-fry vegetables go soggy — and the fix"
 quickAnswer: "your heat is too low and you're stirring too early. Turn it up, leave the vegetables alone until they sizzle, then go. Same fix for sautéing."
 date: 2026-10-10
+published: false
 ---
 
 You're afraid of the wrong thing.

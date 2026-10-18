@@ -43,7 +43,11 @@ export default defineConfig({
   base,
   trailingSlash: 'ignore',
   build: { format: 'directory' },
-  integrations: [sitemap(), cname()],
+  integrations: [
+    // /app is a redirect to the Home page, so it stays out of the sitemap.
+    sitemap({ filter: (page) => !new URL(page).pathname.replace(/\/$/, '').endsWith('/app') }),
+    cname(),
+  ],
   markdown: { rehypePlugins: [rehypeBaseLinks] },
   vite: { define: { __IS_PRODUCTION__: JSON.stringify(isProduction) } },
 });

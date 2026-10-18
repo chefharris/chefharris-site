@@ -9,6 +9,7 @@ const articles = defineCollection({
     title: z.string(),            // H1 and <title>
     quickAnswer: z.string(),      // the "Quick answer" card and the meta description
     date: z.coerce.date(),        // publish date (in the file, never in the URL)
+    published: z.boolean().default(true), // false = file kept, page not built (no URL, not in the sitemap)
   }),
 });
 
