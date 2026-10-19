@@ -25,13 +25,13 @@ The bio strip shows the cartoon face (`src/assets/brand/app_icon_face_only_1024.
 
 ## App screenshots
 
-`src/assets/screens/originals/` holds the four untouched captures (Pixel 7 Pro, 1440×3120, 18 Oct 2026). `src/assets/screens/<name>.png` are the same pictures at 720 px wide, lossless, which the build turns into 360/720 px WebP (quality 90) with PNG fallback. To replace a screenshot: drop the new capture into `originals/` under the same name, then regenerate the 720 px copy:
+`src/assets/screens/originals/` holds the four untouched captures (Pixel 7 Pro, 1440×3120; two from 18 Oct, two from 19 Oct 2026). `src/assets/screens/<name>.png` are the web copies: the same box cropped from every capture (the status bar at the top, and everything from the red DEV strip down, i.e. the strip and the Android navigation bar), 720 px wide, lossless. The build turns them into 360/720 px WebP (quality 90) with PNG fallback, and the phone frame on the Home page has the same aspect as the crop, so nothing is hidden. To replace a screenshot: drop the new capture into `originals/` under the same name, then
 
 ```
-node -e "require('sharp')('src/assets/screens/originals/sos.png').resize({width:720}).png({compressionLevel:9}).toFile('src/assets/screens/sos.png')"
+node scripts/make-screens.mjs
 ```
 
-Never crop, recolour or edit the pictures.
+which rebuilds all four web copies and `docs/sessions/2026-10-18_W2_screens_preview.png`. The crop box is the two numbers at the top of that script. Nothing else is ever done to the pictures: no recolouring, no retouching, no stretching.
 
 ## Share image
 
@@ -126,7 +126,7 @@ The build switch itself is prepared on the branch `go-live` (workflow env lines 
 - [x] Settings → Pages → Source: GitHub Actions
 - [x] GoatCounter account (code `chefharris`)
 - [x] Kit account and form id
-- [x] Four app screenshots (18 Oct 2026)
+- [x] Four app screenshots (18–19 Oct 2026, cropped per `scripts/make-screens.mjs`)
 - [ ] Harris: check `docs/sessions/2026-10-18_W2_screens_preview.png` and the Home page on the Pixel
 - [ ] Harris: Kit custom field `source` + tag number for `kitTesterTagId` (step list 2), then the two test signups
 - [ ] Harris: `docs/GO_LIVE.md` A–C, then "domain live" → Claude Code merges `go-live`
@@ -146,6 +146,7 @@ npm run dev                      # http://localhost:4321
 npm run build                    # production build into dist/ (domain URLs)
 node scripts/make-favicons.mjs   # regenerate the favicon files from the brand icon
 node scripts/make-og-landing.mjs # regenerate the share image
+node scripts/make-screens.mjs    # recrop the app screenshots and the preview sheet
 ```
 
 Preview-mode build (github.io URLs, as the workflow does it): set `SITE_URL=https://chefharris.github.io` and `BASE_PATH=/chefharris-site` before `npm run build`.
@@ -168,4 +169,4 @@ Preview-mode build (github.io URLs, as the workflow does it): set `SITE_URL=http
 - All visible text is the signed text; no copy is invented here.
 - Nothing on the site, in the repo, in alt text or in commit messages names the place where Harris teaches or anyone he teaches. "Hobby cooks", "in person", "real kitchens" only.
 - No cookies, no cookie banner, no comments, no search, no share buttons, no pop-ups, no counters, no German, no paid service. The only form is the Kit email form on the Home page.
-- Brand files are placed, never redrawn or recoloured. Screenshots are never cropped or edited.
+- Brand files are placed, never redrawn or recoloured. Screenshots get one fixed crop (status bar, DEV strip, navigation bar) and nothing else.

@@ -140,7 +140,7 @@ img { max-width: 100%; height: auto; display: block; }
 .features h3 { font-size: 1.2rem; margin: 0 0 0.3em; }
 .features p { margin: 0 0 0.9rem; }
 .phone {
-  width: 100%; max-width: 300px; aspect-ratio: 9 / 19.5;
+  width: 100%; max-width: 300px; aspect-ratio: 1440 / 2810; /* the screenshots' crop (scripts/make-screens.mjs) */
   border: 2px solid var(--sage); border-radius: 22px; overflow: hidden; background: var(--sage-wash);
 }
 .phone img { width: 100%; height: 100%; object-fit: cover; }
