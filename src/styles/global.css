@@ -118,7 +118,7 @@ img { max-width: 100%; height: auto; display: block; }
 .hero { background: #fff; border-radius: 12px; overflow: hidden; margin: 0 0 0.5rem; }
 .hero img { width: 200px; margin: 0 auto; }
 @media (min-width: 600px) { .hero img { width: 300px; } }
-@media (min-width: 900px) { .hero img { width: 340px; } }
+@media (min-width: 900px) { .hero { width: fit-content; margin: 0 auto 0.5rem; } .hero img { width: 340px; } } /* desktop: the white card hugs the 340 px image, centred */
 
 /* Home: email form (used twice) */
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
