@@ -2,8 +2,7 @@
 
 The landing page for the Chef Harris app, plus About, Impressum and Privacy. Static site built with [Astro](https://astro.build), hosted on GitHub Pages, cost CHF 0.
 
-- Live preview (until the domain is pointed): https://chefharris.github.io/chefharris-site/
-- Live domain (after `docs/GO_LIVE.md`): https://chefharris.ch
+- Live: https://chefharris.ch (since 19 Oct 2026; the old preview address https://chefharris.github.io/chefharris-site/ redirects there)
 
 Every push to `main` rebuilds and deploys the site automatically (about one minute).
 
@@ -108,7 +107,7 @@ Still open, free, in Kit:
 
 | | Open | Tick the box? | Email |
 |---|---|---|---|
-| Top form | `https://chefharris.github.io/chefharris-site/?ref=test` | yes | `chefharris.app+top@gmail.com` |
+| Top form | `https://chefharris.ch/?ref=test` | yes | `chefharris.app+top@gmail.com` |
 | Bottom form | the same page, scroll to the bottom form | no | `chefharris.app+bottom@gmail.com` |
 
 Each "Tell me" lands on Kit's "check your email" page; click the confirmation link in both emails (double opt-in). Then in Kit → **Subscribers**: both addresses are listed as confirmed, both show `source: test`, only the top one carries the tag `tester-interest`; the "App launch" form shows the two signups. In GoatCounter → Events: one `signup-top`, one `signup-bottom`. Afterwards delete the two test subscribers in Kit (open the subscriber → ⋯ → Delete) so the real list starts clean.
@@ -117,11 +116,9 @@ Sharing links later: add `?ref=<source>` to the link you post, e.g. `https://che
 
 Export of the list: Grow → Subscribers → Export (CSV). No sequences or automations are set up; the launch email is a plain Broadcast.
 
-### 3. Go live on chefharris.ch
+### 3. Go live on chefharris.ch — done 19 Oct 2026
 
-All clicks in **`docs/GO_LIVE.md`**: Infomaniak DNS, the chefharris.app redirect, GitHub Pages custom domain and HTTPS, the "domain live" message, then Search Console and the sitemap.
-
-The build switch itself is prepared on the branch `go-live` (workflow env lines → `https://chefharris.ch`, plus `public/CNAME`). It is merged and pushed only after Harris says "domain live". Until then preview builds keep the `noindex` tag and a `Disallow: /` robots.txt.
+DNS, the custom domain in GitHub Pages and the build switch (`go-live` merged: workflow env lines → `https://chefharris.ch`, `public/CNAME`) are done; the site builds without `noindex`, with an open `robots.txt` and domain canonicals. Still open from `docs/GO_LIVE.md`: tick **Enforce HTTPS** (step C, last click), the chefharris.app redirect (step B) if not done, and Search Console with the sitemap (step E).
 
 ## Open TODOs
 
@@ -132,7 +129,8 @@ The build switch itself is prepared on the branch `go-live` (workflow env lines 
 - [ ] Harris: check `docs/sessions/2026-10-18_W2_screens_preview.png` and the Home page on the Pixel
 - [x] Kit tag number in `kitTesterTagId` (19 Oct 2026)
 - [ ] Harris: Kit custom field `source` (step list 2), then the two test signups
-- [ ] Harris: `docs/GO_LIVE.md` A–C, then "domain live" → Claude Code merges `go-live`
+- [x] Domain live: `go-live` merged 19 Oct 2026
+- [ ] Harris: GitHub → Settings → Pages → tick **Enforce HTTPS**; chefharris.app redirect (GO_LIVE.md B) if not done
 - [ ] Harris: Search Console + sitemap (GO_LIVE.md E)
 - [ ] Later: Harris's photo as `src/assets/harris.jpg`
 - [ ] Later: publish the first article and bring back the Home list (needs Harris's sign)
@@ -152,7 +150,7 @@ node scripts/make-og-landing.mjs # regenerate the share image
 node scripts/make-screens.mjs    # recrop the app screenshots and the preview sheet
 ```
 
-Preview-mode build (github.io URLs, as the workflow does it): set `SITE_URL=https://chefharris.github.io` and `BASE_PATH=/chefharris-site` before `npm run build`.
+Preview-mode build (github.io URLs, as the workflow did until 19 Oct 2026): set `SITE_URL=https://chefharris.github.io` and `BASE_PATH=/chefharris-site` before `npm run build`.
 
 ## What is where
 

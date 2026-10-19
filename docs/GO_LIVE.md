@@ -1,6 +1,6 @@
 # Go live on chefharris.ch — Harris's clicks
 
-Plain steps, in order. Everything is free. The site stays on the preview URL (https://chefharris.github.io/chefharris-site/) and hidden from search engines until step D is done.
+Plain steps, in order. Everything is free. Steps A, C and D were done on 19 Oct 2026; the site has been on https://chefharris.ch since then. Until step D the site stayed on the preview URL and hidden from search engines.
 
 The GitHub Pages addresses below were checked against GitHub's own documentation on 18 October 2026 ("Managing a custom domain for your GitHub Pages site"). If GitHub's page shows different numbers on the day, use GitHub's.
 
@@ -37,7 +37,7 @@ The GitHub Pages addresses below were checked against GitHub's own documentation
 2. Under **Custom domain** type `chefharris.ch` → **Save**. GitHub runs a DNS check (a few minutes, up to an hour if the records are still spreading). Wait until it shows a green tick.
 3. Tick **Enforce HTTPS**. If the box is greyed out, the certificate is still being issued — come back in up to an hour and tick it then.
 
-## D. Tell me "domain live"
+## D. Tell me "domain live" — done 19 Oct 2026
 
 Write **"domain live"** in the website chat. I then publish the prepared go-live change (branch `go-live`): the build switches to `https://chefharris.ch`, the `noindex` tag goes away, `robots.txt` opens, the sitemap and all canonical links use the domain, and the `CNAME` file is included in every deploy so the custom domain survives future builds. About a minute later https://chefharris.ch shows the site. The old preview URL redirects there by itself.
 
