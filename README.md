@@ -82,7 +82,7 @@ All in `src/site.config.ts`:
 | `goatcounterCode` | GoatCounter site code (`https://<code>.goatcounter.com`) | set to `chefharris` |
 | `googleSiteVerification` | the `content="…"` value from Google Search Console's HTML-tag method (only if the TXT-record method in `docs/GO_LIVE.md` is not used) | empty |
 | `kitFormId` | the numeric form id from Kit | set (`10026726`, the "App launch" form) |
-| `kitTesterTagId` | the numeric id of the Kit tag `tester-interest` (see Kit step list, item 5) | **TODO** — empty, so the tester checkbox is shown but not sent yet |
+| `kitTesterTagId` | the numeric id of the Kit tag `tester-interest` | set (`24794691`, 19 Oct 2026) |
 | `privacyLastUpdated` | the "Last updated" date on /privacy; changes only when the privacy text changes | 18 October 2026 |
 
 Push after editing; the site rebuilds.
@@ -93,16 +93,18 @@ Push after editing; the site rebuilds.
 
 Account `chefharris`, dashboard https://chefharris.goatcounter.com. The two email forms also send an event on submit, `signup-top` and `signup-bottom`; they show up in the dashboard under "Events" (toggle at the top of the paths list). The count is taken as the form is sent to Kit, so it counts submits, not confirmed subscribers — the confirmed number is in Kit.
 
-### 2. Kit (email list) — form done, two small settings open
+### 2. Kit (email list) — form and tag done, one small setting open
 
 Done on 10 Oct 2026: both forms on the Home page post to Kit form `10026726` ("App launch", double opt-in on). Kit's own embed script is not used; the plain HTML form posts the email, the tester checkbox and a hidden `source` field.
 
-Open, both free, both in Kit:
+Done 19 Oct 2026: tag `tester-interest` = `24794691`, set in `kitTesterTagId`; the checkbox sends it.
+
+Still open, free, in Kit:
 
 1. **Custom field `source`** (where a signup came from: `linkedin`, `reddit`, `instagram`, `betalist`, `whatsapp`, … or `direct`). Kit only stores a field it already knows, so create it once: Grow → **Subscribers** → open any subscriber → **Add a new field** → name `source` → Save. From then on every signup carries it.
-2. **Tag `tester-interest`** for the checkbox. The plain form needs the tag's number. Easiest way to get it: Grow → **Landing Pages & Forms** → **App launch** → in the builder click **+** to add a field → in the right sidebar under **Save as** choose **Tag** → type `tester-interest` (Kit creates the tag) → choose **Checkbox** → Save → **Publish** → **HTML** tab. In that code find `name="tags[]" value="1234567"` and send me the number. I paste it into `kitTesterTagId` and push. (The extra field in Kit's builder changes nothing on the site; the site uses only the number.)
+2. ~~Tag `tester-interest`~~ — done (`24794691`). If the tag is ever recreated in Kit, its new number goes into `kitTesterTagId`.
 
-**Test signups, one per form** (after the two settings; `+something` addresses land in the normal inbox):
+**Test signups, one per form** (after the `source` field exists; `+something` addresses land in the normal inbox):
 
 | | Open | Tick the box? | Email |
 |---|---|---|---|
@@ -128,7 +130,8 @@ The build switch itself is prepared on the branch `go-live` (workflow env lines 
 - [x] Kit account and form id
 - [x] Four app screenshots (18–19 Oct 2026, cropped per `scripts/make-screens.mjs`)
 - [ ] Harris: check `docs/sessions/2026-10-18_W2_screens_preview.png` and the Home page on the Pixel
-- [ ] Harris: Kit custom field `source` + tag number for `kitTesterTagId` (step list 2), then the two test signups
+- [x] Kit tag number in `kitTesterTagId` (19 Oct 2026)
+- [ ] Harris: Kit custom field `source` (step list 2), then the two test signups
 - [ ] Harris: `docs/GO_LIVE.md` A–C, then "domain live" → Claude Code merges `go-live`
 - [ ] Harris: Search Console + sitemap (GO_LIVE.md E)
 - [ ] Later: Harris's photo as `src/assets/harris.jpg`

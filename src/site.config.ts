@@ -23,7 +23,7 @@ export const SITE = {
 
   // Kit tag "tester-interest" (L4): the numeric id of the tag the tester checkbox applies.
   // Empty = the checkbox is shown but not sent to Kit yet. See README §"Kit".
-  kitTesterTagId: '',
+  kitTesterTagId: '24794691',
 
   // Shown on /privacy as "Last updated". Changes only when the privacy text changes.
   privacyLastUpdated: '18 October 2026',
