@@ -146,7 +146,15 @@ img { max-width: 100%; height: auto; display: block; }
   border: 2px solid var(--sage); border-radius: 22px; overflow: hidden; background: var(--sage-wash);
 }
 .phone img { width: 100%; height: 100%; object-fit: cover; }
-@media (min-width: 900px) { .phone { margin: 0 auto; } } /* desktop: frame centred under its text */
+/* 900–1099 px: 2×2 with 260 px frames, each centred under its text.
+   From 1100 px: only the grid widens to 1040 px (centred on the column), four in one row, 220 px frames;
+   every card is a subgrid of three rows (title, text, frame), so the frame tops sit on one line. */
+@media (min-width: 900px) { .phone { margin: 0 auto; max-width: 260px; } }
+@media (min-width: 1100px) {
+  .features ul { grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto auto; gap: 0 1.5rem; margin-inline: calc((var(--measure) - 1040px) / 2); }
+  .features li { display: grid; grid-row: span 3; grid-template-rows: subgrid; }
+  .phone { max-width: 220px; align-self: start; }
+}
 
 /* Home: bio strip */
 .bio { display: flex; align-items: flex-start; gap: 1rem; margin: 2.5rem 0 0.5rem; }
