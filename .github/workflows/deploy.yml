@@ -16,14 +16,14 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # ── Preview (now): the site is served from the github.io project URL. ──
-  SITE_URL: https://${{ github.repository_owner }}.github.io
-  BASE_PATH: /chefharris-site
-  # ── DNS step (after the Infomaniak records are set, see README §"Go live"): ──
-  # replace the two lines above with
-  #   SITE_URL: https://chefharris.ch
-  #   BASE_PATH: /
-  # The build then writes the CNAME file, drops the "noindex" tag and opens robots.txt.
+  # ── Live: the site is served on the custom domain (docs/GO_LIVE.md). ──
+  # The build drops the "noindex" tag, opens robots.txt and uses the domain in
+  # canonical links and the sitemap. public/CNAME keeps the domain on every deploy.
+  SITE_URL: https://chefharris.ch
+  BASE_PATH: /
+  # Preview mode (github.io project URL) was:
+  #   SITE_URL: https://${{ github.repository_owner }}.github.io
+  #   BASE_PATH: /chefharris-site
 
 jobs:
   build:

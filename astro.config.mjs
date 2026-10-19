@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import { writeFileSync } from 'node:fs';
 import { SITE } from './src/site.config.ts';
 
 // SITE_URL / BASE_PATH come from the GitHub Actions workflow.
@@ -26,18 +25,6 @@ function rehypeBaseLinks() {
   return (tree) => walk(tree);
 }
 
-/** Writes the CNAME file GitHub Pages reads for the custom domain (production builds only). */
-function cname() {
-  return {
-    name: 'cname',
-    hooks: {
-      'astro:build:done': ({ dir }) => {
-        if (isProduction) writeFileSync(new URL('CNAME', dir), new URL(site).hostname + '\n');
-      },
-    },
-  };
-}
-
 export default defineConfig({
   site,
   base,
@@ -46,7 +33,6 @@ export default defineConfig({
   integrations: [
     // /app is a redirect to the Home page, so it stays out of the sitemap.
     sitemap({ filter: (page) => !new URL(page).pathname.replace(/\/$/, '').endsWith('/app') }),
-    cname(),
   ],
   markdown: { rehypePlugins: [rehypeBaseLinks] },
   vite: { define: { __IS_PRODUCTION__: JSON.stringify(isProduction) } },
