@@ -26,5 +26,5 @@ export const SITE = {
   kitTesterTagId: '24794691',
 
   // Shown on /privacy as "Last updated". Changes only when the privacy text changes.
-  privacyLastUpdated: '18 October 2026',
+  privacyLastUpdated: '1 November 2026',
 };
