@@ -3,7 +3,7 @@ import { Image, Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import SignupForm from '../components/SignupForm.astro';
 import { href } from '../lib/url';
-import hero from '../assets/brand/hero_pan_toss_2048.png';
+import hero from '../assets/brand/app_icon_1024.png';
 import cartoonFace from '../assets/brand/app_icon_face_only_1024.png';
 import fridgeClearer from '../assets/screens/fridge-clearer.png';
 import cookMode from '../assets/screens/cook-mode.png';
@@ -26,16 +26,18 @@ const features = [
 ];
 ---
 <Base title="Chef Harris" ogTitle="Chef Harris — Cook by feel, not by luck." description={description} ogImage="landing">
+  <div class="top">
   <section class="hero-text">
     <h1>Cook by feel, not by luck.</h1>
     <p class="lead">{description}</p>
     <p class="muted">Coming early 2027.</p>
   </section>
   <div class="hero">
-    <Image src={hero} alt="Chef Harris tossing vegetables in a pan" width={840} widths={[420, 840]} sizes="(min-width: 900px) 340px, (min-width: 600px) 300px, 200px" loading="eager" />
+    <Image src={hero} alt="Chef Harris tossing vegetables in a pan" width={840} widths={[420, 840]} sizes="(min-width: 1200px) 380px, (min-width: 1000px) 320px, (min-width: 600px) 300px, 200px" loading="eager" />
   </div>
 
   <SignupForm placement="top" />
+  </div>
 
   <section class="features" aria-labelledby="what-it-does">
     <h2 id="what-it-does">What it does</h2>
@@ -52,6 +54,7 @@ const features = [
     </ul>
   </section>
 
+  <div class="bottom">
   <section class="bio">
     <Image class="face" src={bioImage} alt="Harris" width={192} height={192} densities={[1, 2]} loading="lazy" />
     <div>
@@ -61,6 +64,7 @@ const features = [
   </section>
 
   <SignupForm placement="bottom" />
+  </div>
 </Base>
 
 <script>

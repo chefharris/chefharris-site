@@ -161,3 +161,63 @@ img { max-width: 100%; height: auto; display: block; }
 .bio .face { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; flex: none; }
 @media (min-width: 600px) { .bio .face { width: 96px; height: 96px; } }
 .bio p { margin-bottom: 0.6em; }
+
+/* ===== Desktop layout pass (W4) — only ≥ 1000 px changes the layout. Phones: hero picture only. ===== */
+
+/* Hero picture: transparent mark sits straight on the cream page, no white box (all widths) */
+.hero { background: none; border-radius: 0; }
+
+/* Phones: the screenshot frames use the full text width, so both edges line up with the text */
+@media (max-width: 599px) { .features .phone { max-width: none; } }
+
+@media (min-width: 1000px) {
+  /* One container, one left edge for every section */
+  main:has(> .top) { max-width: calc(1080px + 2 * var(--gutter)); padding-top: 3rem; }
+
+  /* Top: text + form on the left, the picture on the right */
+  .top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-areas: "text pic" "form pic";
+    column-gap: 3rem;
+    align-items: center;
+  }
+  .hero-text { grid-area: text; align-self: end; }
+  .hero-text h1 { font-size: 2.3rem; }
+  .hero { grid-area: pic; width: auto; margin: 0; }
+  .hero img { width: 100%; margin: 0; }
+  .top .signup { grid-area: form; align-self: start; margin: 1rem 0 0; max-width: 560px; }
+
+  /* What it does: picture on top, then title, then text — every row lines up across the four */
+  .features { margin-top: 4.5rem; }
+  .features h2 { margin: 0 0 1.5rem; }
+  .features ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    gap: 0 2rem;
+    margin-inline: 0;
+  }
+  .features li { display: grid; grid-row: span 3; grid-template-rows: subgrid; }
+  .features .phone { order: -1; max-width: none; width: 100%; margin: 0 0 1.1rem; }
+  .features h3 { margin: 0 0 0.3em; }
+  .features p { margin: 0; font-size: 0.95rem; }
+
+  /* Bottom: bio and the second form side by side, in one soft panel */
+  .bottom {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 4rem;
+    align-items: start;
+    margin-top: 4.5rem;
+    padding: 2.5rem 3rem;
+    background: var(--sage-wash);
+    border-radius: 16px;
+  }
+  .bottom .bio { margin: 0; }
+  .bottom .signup { margin: 0; }
+}
+
+@media (min-width: 1200px) {
+  .top { grid-template-columns: minmax(0, 1fr) 380px; column-gap: 4rem; }
+  .hero-text h1 { font-size: 2.6rem; }
+}
